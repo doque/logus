@@ -1,0 +1,23 @@
+{
+  "name": "logus",
+  "author": "Michail Morozov <mihmoz@gmail.com>",
+  "version": "0.0.1",
+  "description": "Lightweight fs logger",
+  "keywords": ["log"],
+  "engines": {
+    "node": ">=0.8.0 <0.11.0"
+  },
+  "repository": {
+      "type": "git",
+      "url": ""
+  },
+  "main": "./lib/logus.js",
+  "devDependencies": {
+    "mocha": "1.14.x",
+    "should": "2.1.x"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test"
+  },
+  "license": "MIT"
+}
