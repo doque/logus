@@ -1,4 +1,2 @@
 --require should
 --reporter spec
-
-test/test.js
