@@ -3,15 +3,16 @@
   "author": "Michail Morozov <mihmoz@gmail.com>",
   "version": "1.0.1",
   "description": "Lightweight file logger",
+  "homepage": "https://github.com/mmorozov/logus",
   "keywords": ["log"],
   "engines": {
-    "node": ">=0.8.0 <0.11.0"
+    "node": ">=0.10.0 <0.11.0"
   },
   "repository": {
       "type": "git",
-      "url": ""
+      "url": "https://github.com/mmorozov/logus.git"
   },
-  "main": "./lib/logus.js",
+  "main": "./lib/logus",
   "devDependencies": {
     "mocha": "1.15.x",
     "should": "2.1.x"
