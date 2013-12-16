@@ -1,8 +1,8 @@
 {
   "name": "logus",
   "author": "Michail Morozov <mihmoz@gmail.com>",
-  "version": "1.0.0",
-  "description": "Lightweight fs logger",
+  "version": "1.0.1",
+  "description": "Lightweight file logger",
   "keywords": ["log"],
   "engines": {
     "node": ">=0.8.0 <0.11.0"
