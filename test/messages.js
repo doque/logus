@@ -4,85 +4,79 @@ var fs = require('fs'),
 describe('Testing logus message', function() {
   var log;
   var logpath = __dirname + '/tmp/message.log';
-
+  this.timeout(15000);
   before(function(done) {
     log = logus(logpath);
     done();
   });
 
   it('info test', function(done) {
-    log.info('test');
-    fs.readFile(logpath, function(err, data) {
+    log.info('test', function() {
+      data = fs.readFileSync(logpath);
       data.toString().length.should.equal(33);
-      fs.unlink(logpath, function() {
-        done();
-      });
+      fs.unlinkSync(logpath);
+      done();
     });
   });
 
   it('critical test', function(done) {
-    log.critical('test');
-    fs.readFile(logpath, function(err, data) {
+    log.critical('test', function() {
+      data = fs.readFileSync(logpath);
       data.toString().length.should.equal(37);
-      fs.unlink(logpath, function() {
-        done();
-      });
+      fs.unlinkSync(logpath);
+      done();
     });
   });
 
   it('error test', function(done) {
-    log.error('test');
-    fs.readFile(logpath, function(err, data) {
+    log.error('test', function() {
+      data = fs.readFileSync(logpath);
       data.toString().length.should.equal(34);
-      fs.unlink(logpath, function() {
-        done();
-      });
+      fs.unlinkSync(logpath);
+      done();
     });
   });
 
   it('warning test', function(done) {
-    log.warning('test');
-    fs.readFile(logpath, function(err, data) {
+    log.warning('test', function() {
+      data = fs.readFileSync(logpath);
       data.toString().length.should.equal(36);
-      fs.unlink(logpath, function() {
-        done();
-      });
+      fs.unlinkSync(logpath);
+      done();
     });
   });
 
   it('notice test', function(done) {
-    log.notice('test');
-    fs.readFile(logpath, function(err, data) {
-      data.toString().length.should.equal(35);
-      fs.unlink(logpath, function() {
-        done();
-      });
+    log.critical('notice', function() {
+      data = fs.readFileSync(logpath);
+      data.toString().length.should.equal(39);
+      fs.unlinkSync(logpath);
+      done();
     });
   });
 
   it('debug test', function(done) {
-    log.debug('test');
-    fs.readFile(logpath, function(err, data) {
+    log.debug('test', function() {
+      data = fs.readFileSync(logpath);
       data.toString().length.should.equal(34);
-      fs.unlink(logpath, function() {
-        done();
-      });
+      fs.unlinkSync(logpath);
+      done();
     });
   });
 
-  it('info double arguments test', function(done) {
-    log.info('test', 'test2');
-    fs.readFile(logpath, function(err, data) {
-      data.toString().length.should.equal(39);
-      fs.unlink(logpath, function() {
-        done();
-      });
-    });
+  it('10 messages test', function(done) {
+    for (var i = 0; i < 10; i++) {
+      log.info('test');
+    }
+    setTimeout(function() {
+      data = fs.readFileSync(logpath);
+      data.toString().length.should.equal(330);
+      fs.unlinkSync(logpath);
+      done();
+    }, 100);
   });
-
 
   after(function(done) {
-    log.close();
     fs.unlink(logpath, function() {
       done();
     });
