@@ -4,7 +4,7 @@ var fs = require('fs'),
 describe('Testing logus message', function() {
   var log;
   var logpath = __dirname + '/tmp/message.log';
-  this.timeout(15000);
+
   before(function(done) {
     log = logus(logpath);
     done();
@@ -64,13 +64,13 @@ describe('Testing logus message', function() {
     });
   });
 
-  it('10 messages test', function(done) {
-    for (var i = 0; i < 10; i++) {
+  it('100 messages test', function(done) {
+    for (var i = 0; i < 100; i++) {
       log.info('test');
     }
     setTimeout(function() {
       data = fs.readFileSync(logpath);
-      data.toString().length.should.equal(330);
+      data.toString().length.should.equal(3300);
       fs.unlinkSync(logpath);
       done();
     }, 100);
